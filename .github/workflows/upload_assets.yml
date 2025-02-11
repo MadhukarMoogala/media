@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: assets
-          path: _assets  # Upload the _assets folder and its contents
+          path: _assets/  # Upload the _assets folder and its contents
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
