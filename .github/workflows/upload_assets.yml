@@ -18,16 +18,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4 # Correct, current action
+        uses: actions/upload-artifact@v4
         with:
-          name: assets # Give the artifact a name
-          path: _assets
+          name: assets
+          path: _assets  # Upload the _assets folder and its contents
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact: assets # Use the correct artifact name
-          config: |
+          artifact: assets
+          config: |  # This is CRUCIAL!
             {
-              "path": "/_assets"
+              "path": "/_assets"  # Map the artifact's root to /_assets on GitHub Pages
             }
