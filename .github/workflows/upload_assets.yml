@@ -9,18 +9,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # This is the crucial line!
-      pages: write # Required to deploy to Github Pages
-      contents: read # Required to checkout the code
+      id-token: write
+      pages: write
+      contents: read
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Upload Assets as Artifact
+        uses: actions/upload-pages-artifact@v2  # Correct action for Pages artifacts
+        with:
+          path: _assets
+
       - name: Deploy Assets to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          path: _assets
+          artifact: github-pages # Important: Specify the artifact name
           config: |
             {
               "path": "/_assets"
