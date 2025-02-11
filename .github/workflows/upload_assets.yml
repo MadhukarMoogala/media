@@ -20,17 +20,15 @@ jobs:
       - name: List _assets contents
         run: ls -R _assets
 
-      - name: Check for symlinks
-        run: find _assets -type l
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: assets
-          path: _assets/
+          name: site
+          path: |
+            _assets/
+            index.html
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: assets
-         
+          artifact_name: site         
