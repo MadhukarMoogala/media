@@ -8,15 +8,19 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # This is the crucial line!
+      pages: write # Required to deploy to Github Pages
+      contents: read # Required to checkout the code
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Deploy Assets to GitHub Pages
         uses: actions/deploy-pages@v2
-        with:        
-          path: _assets  
-          # This configures the deployment to use the /_assets path.
+        with:
+          path: _assets
           config: |
             {
               "path": "/_assets"
