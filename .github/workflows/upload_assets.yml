@@ -26,8 +26,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact: assets
-          config: |  # This is CRUCIAL!
-            {
-              "path": "/_assets"  # Map the artifact's root to /_assets on GitHub Pages
-            }
+          artifact_name: assets
+         
