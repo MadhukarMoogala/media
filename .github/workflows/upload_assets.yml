@@ -3,7 +3,7 @@ name: Deploy Assets to GitHub Pages
 on:
   push:
     branches:
-      - main  # Or your main branch name
+      - main
 
 jobs:
   deploy:
@@ -12,18 +12,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Upload Assets
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: _assets
-
       - name: Deploy Assets to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          artifact: github-pages         
+        with:        
+          path: _assets  
+          # This configures the deployment to use the /_assets path.
           config: |
             {
               "path": "/_assets"
             }
-    
